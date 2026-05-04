@@ -1,0 +1,274 @@
+---
+const faqs = [
+  {
+    question: "Apa itu PIKA?",
+    answer: "PIKA adalah program pengembangan diri anak dan remaja yang dirancang sesuai tahap usia untuk membantu membangun kepercayaan diri, keterampilan hidup, dan karakter positif."
+  },
+  {
+    question: "Program PIKA ditujukan untuk usia berapa?",
+    answer: "PIKA terbagi menjadi beberapa level berdasarkan usia, mulai dari anak usia 5 tahun hingga remaja usia 15 tahun, sehingga pembelajaran lebih sesuai dengan tahap perkembangan mereka."
+  },
+  {
+    question: "Apa tujuan utama dari program PIKA?",
+    answer: "Tujuan utama PIKA adalah membantu anak berkembang secara menyeluruh, baik dalam aspek komunikasi, kemandirian, kreativitas, hingga kesiapan menghadapi tantangan di masa depan."
+  },
+  {
+    question: "Bagaimana sistem pembelajaran di PIKA?",
+    answer: "Pembelajaran di PIKA bersifat interaktif, menyenangkan, dan berpusat pada siswa, dengan pendekatan praktik langsung agar anak lebih mudah memahami dan menerapkan apa yang dipelajari."
+  },
+  {
+    question: "Apakah anak harus sudah memiliki kemampuan tertentu untuk bergabung?",
+    answer: "Tidak. Program PIKA dirancang untuk semua anak, baik yang masih pemula maupun yang sudah memiliki kemampuan dasar."
+  },
+  {
+    question: "Apakah orang tua bisa memantau perkembangan anak?",
+    answer: "Ya, orang tua akan mendapatkan informasi perkembangan anak secara berkala sebagai bentuk evaluasi dan komunikasi antara pengajar dan orang tua."
+  },
+  {
+    question: "Berapa lama durasi setiap program?",
+    answer: "Durasi program disesuaikan dengan level dan kebutuhan pembelajaran, dengan pertemuan rutin yang dirancang agar efektif dan tidak membebani anak."
+  },
+  {
+    question: "Apakah tersedia kelas percobaan (trial)?",
+    answer: "Ya, PIKA menyediakan kelas percobaan agar anak dan orang tua dapat mengenal metode pembelajaran sebelum bergabung secara penuh."
+  },
+  {
+    question: "Bagaimana cara mendaftar di PIKA?",
+    answer: "Pendaftaran dapat dilakukan melalui kontak yang tersedia di halaman utama."
+  },
+  {
+    question: "Apakah tersedia pilihan kelas privat atau kelompok?",
+    answer: "Ya, PIKA menyediakan fleksibilitas metode belajar sesuai kebutuhan anak. Tersedia kelas privat dengan mentor yang datang langsung ke rumah untuk pendampingan lebih personal, serta kelas kelompok kecil berisi 3–5 anak agar tetap interaktif, fokus, dan menyenangkan."
+  },
+  {
+    question: "Di mana lokasi pembelajaran PIKA?",
+    answer: "Saat ini PIKA belum memiliki kantor tetap. Tim kami berbasis di area Setiabudi, Bandung. Untuk pembelajaran, kelas dapat dilakukan secara privat di rumah masing-masing, atau untuk kelompok kecil dilaksanakan di ruang publik yang nyaman dan ramah anak seperti taman atau kafe di sekitar Setiabudi."
+  }
+];
+---
+
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <span class="faq-eyebrow">Punya Pertanyaan?</span>
+      <h2 class="faq-heading">Frequently Asked Questions</h2>
+      <p class="faq-sub">Jawaban lengkap dari beberapa pertanyaan yang paling sering diajukan mengenai program PIKA.</p>
+    </div>
+
+    <div class="faq-grid">
+      {faqs.map((faq, idx) => (
+        <div class="faq-item" data-index={idx}>
+          <button class="faq-trigger" aria-expanded="false" aria-controls={`faq-answer-${idx}`}>
+            <span class="faq-question">{faq.question}</span>
+            <span class="faq-icon-wrapper">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-chevron">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div id={`faq-answer-${idx}`} class="faq-content" role="region" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.35s ease-out;">
+            <div class="faq-answer-inner">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content') as HTMLElement;
+    const chevron = item.querySelector('.faq-chevron') as HTMLElement;
+
+    if (trigger && content && chevron) {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all other open items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherTrigger = otherItem.querySelector('.faq-trigger');
+            const otherContent = otherItem.querySelector('.faq-content') as HTMLElement;
+            const otherChevron = otherItem.querySelector('.faq-chevron') as HTMLElement;
+            if (otherTrigger && otherContent && otherChevron) {
+              otherTrigger.setAttribute('aria-expanded', 'false');
+              otherContent.style.maxHeight = '0';
+              otherContent.style.opacity = '0';
+              otherChevron.style.transform = 'rotate(0deg)';
+              otherItem.classList.remove('active');
+            }
+          }
+        });
+
+        // Toggle clicked item
+        if (isExpanded) {
+          trigger.setAttribute('aria-expanded', 'false');
+          content.style.maxHeight = '0';
+          content.style.opacity = '0';
+          chevron.style.transform = 'rotate(0deg)';
+          item.classList.remove('active');
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+          chevron.style.transform = 'rotate(180deg)';
+          item.classList.add('active');
+        }
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  .faq-section {
+    padding: 100px 0;
+    background: #fdfdfd;
+    position: relative;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .faq-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .faq-eyebrow {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #40A18B;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-heading {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .faq-sub {
+    font-size: 1.05rem;
+    color: #64748b;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+
+  .faq-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+  }
+
+  .faq-item.active {
+    border-color: #40A18B;
+    background: #fefefe;
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.04);
+  }
+
+  .faq-trigger {
+    background: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    text-align: left;
+    cursor: pointer;
+    gap: 20px;
+    transition: all 0.25s ease;
+  }
+
+  .faq-question {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.4;
+    transition: color 0.25s ease;
+  }
+
+  .faq-item:hover .faq-question {
+    color: #0f172a;
+  }
+
+  .faq-item.active .faq-question {
+    color: #1e293b;
+  }
+
+  .faq-icon-wrapper {
+    width: 38px;
+    height: 38px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover .faq-icon-wrapper {
+    background: #e2e8f0;
+  }
+
+  .faq-item.active .faq-icon-wrapper {
+    background: #e6f4f1;
+    color: #40A18B;
+  }
+
+  .faq-chevron {
+    transition: transform 0.35s ease;
+  }
+
+  .faq-answer-inner {
+    padding: 0 32px 24px 32px;
+  }
+
+  .faq-answer-inner p {
+    font-size: 1.02rem;
+    color: #475569;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .faq-trigger {
+      padding: 18px 24px;
+    }
+    .faq-answer-inner {
+      padding: 0 24px 18px 24px;
+    }
+    .faq-question {
+      font-size: 1.05rem;
+    }
+  }
+</style>
