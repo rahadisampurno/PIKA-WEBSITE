@@ -1,0 +1,87 @@
+---
+const highlights = [
+  { label: 'Pricelist', color: 'var(--pika-green)', icon: '💰' },
+  { label: 'Mentor', color: 'var(--pika-yellow)', icon: '👩‍🏫' },
+  { label: 'Testimoni', color: 'var(--pika-red)', icon: '⭐' },
+  { label: 'FAQ', color: 'var(--pika-blue)', icon: '❓' },
+  { label: 'Kegiatan', color: 'var(--pika-green)', icon: '🎥' }
+];
+---
+
+<section class="highlights-container container">
+  <div class="highlights-wrapper">
+    {highlights.map(h => (
+      <div class="highlight-item">
+        <div class="story-ring" style={`border-color: ${h.color}`}>
+          <div class="story-circle">
+            <span class="story-icon">{h.icon}</span>
+          </div>
+        </div>
+        <span class="story-label">{h.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .highlights-container {
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .highlights-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 10px 0;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .highlights-wrapper::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: var(--transition);
+  }
+
+  .highlight-item:hover {
+    transform: scale(1.1);
+  }
+
+  .story-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+
+  .story-circle {
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .story-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+</style>

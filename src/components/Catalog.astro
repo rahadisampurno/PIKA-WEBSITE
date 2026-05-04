@@ -1,0 +1,711 @@
+---
+const programs = [
+  { 
+    title: 'Explorer', 
+    age: 'Usia 5 – 7 Tahun',
+    level: 'Pemula',
+    desc: 'Membangun fondasi kepercayaan diri, kemandirian, dan karakter anak melalui pengalaman belajar yang menyenangkan, interaktif, serta mendorong eksplorasi potensi diri sejak dini.',
+    tags: ['Keberanian Bicara', 'Ekspresi & Emosi', 'Etika Sosial'],
+    btnText: 'Lihat Detail Program',
+    accent: '#40A18B',
+    light: '#e8f5f2',
+    tagColor: '#c0e8df',
+    img: '/assets/explorer.png',
+  },
+  { 
+    title: 'Innovator', 
+    age: 'Usia 8 – 11 Tahun',
+    level: 'Menengah',
+    desc: 'Mengembangkan kemampuan berpikir kreatif, komunikasi, dan kerja sama melalui proses belajar yang lebih terarah, sekaligus membantu anak mulai mengenali minat dan potensinya.',
+    tags: ['Public Speaking', 'Storytelling', 'Kerja Sama Tim'],
+    btnText: 'Lihat Detail Program',
+    accent: '#E09B10',
+    light: '#fef9eb',
+    tagColor: '#fae8b0',
+    img: '/assets/inovator.png',
+  },
+  { 
+    title: 'Leader', 
+    age: 'Usia 12 – 15 Tahun',
+    level: 'Lanjutan',
+    desc: 'Mengasah kepemimpinan, kemampuan berpikir kritis, dan kepercayaan diri untuk mempersiapkan remaja menghadapi tantangan masa depan secara mandiri dan bertanggung jawab.',
+    tags: ['Debat & Retorika', 'Digital Storytelling', 'Kepemimpinan'],
+    btnText: 'Lihat Detail Program',
+    accent: '#D94040',
+    light: '#fff2f2',
+    tagColor: '#fccfcf',
+    img: '/assets/leader.png',
+  }
+];
+---
+
+<section id="program" class="pksec">
+  <div class="pksec__inner">
+
+    <header class="pksec__header">
+      <span class="pksec__eyebrow">Pilih Program Terbaik</span>
+      <h2 class="pksec__heading">✦ Program Kami ✦</h2>
+      <p class="pksec__sub">Program terstruktur yang dirancang khusus untuk setiap jenjang usia</p>
+    </header>
+
+    <div class="pksec__carousel-wrapper">
+      <!-- Floating Navigation Buttons -->
+      <button class="pk-nav-btn pk-prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="pk-nav-btn pk-next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <!-- Carousel Container -->
+      <div class="swiper pk-swiper">
+        <div class="swiper-wrapper">
+          {programs.map(p => (
+            <div class="swiper-slide">
+              <article
+                class="pk-card"
+                style={`--ac: ${p.accent}; --lt: ${p.light}; --tg: ${p.tagColor};`}
+              >
+                <div class="pk-card__img-wrap">
+                  <img src={p.img} alt={`Program ${p.title}`} class="pk-card__img" width="600" loading="lazy" />
+                  <span class="pk-card__age">{p.age}</span>
+                  <span class="pk-card__level">{p.level}</span>
+                </div>
+
+                <div class="pk-card__body">
+                  <h3 class="pk-card__title">{p.title}</h3>
+                  <p class="pk-card__desc">{p.desc}</p>
+
+                  <ul class="pk-card__tags">
+                    {p.tags.map(t => <li class="pk-card__tag">{t}</li>)}
+                  </ul>
+                </div>
+
+                <div class="pk-card__foot">
+                  <button 
+                    class="pk-card__btn open-modal-btn" 
+                    data-program-id={p.title}
+                  >
+                    {p.btnText} →
+                  </button>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination pk-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spectacular Multi-Screen Detail Modal Dialog with Pure Inline Styling (100% Scoping-Safe) -->
+  <div id="programModal" class="pika-modal" aria-hidden="true" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.35s ease;">
+    <div class="pika-modal__overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <div class="pika-modal__content" style="position: relative; max-width: 920px; width: 92%; background-color: #ffffff !important; border-radius: 36px; padding: 48px; box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.35); z-index: 10; max-height: 90vh; overflow-y: auto;">
+      
+      <button id="closeModalBtn" class="pika-modal__close" aria-label="Close modal" style="position: absolute; top: 26px; right: 26px; background: #f1f5f9; border: none; width: 42px; height: 42px; border-radius: 50%; color: #64748b; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      <!-- SCREEN 1: PROGRAM OVERVIEW -->
+      <div id="modalMainScreen" class="modal-screen" style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span id="modalAge" style="background: #e8f5f2; color: #14532d; font-size: 0.85rem; font-weight: 800; padding: 6px 14px; border-radius: 20px;">Usia 5 - 7 Tahun</span>
+          <span id="modalLevel" style="background: #40A18B; color: white; font-size: 0.85rem; font-weight: 800; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">Pemula</span>
+        </div>
+
+        <h3 id="modalTitle" style="font-size: 2.3rem; font-weight: 900; color: #0f172a; margin: 0; line-height: 1.2;">Explorer</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <p id="modalDesc" style="font-size: 1.05rem; color: #475569; line-height: 1.65; margin: 0;">Detailed program description here...</p>
+          
+          <div>
+            <h4 style="font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-top: 0; margin-bottom: 14px;">
+              Pilihan Materi Pembelajaran 
+              <small style="color: #64748b; font-weight: 600; text-transform: none; font-size: 0.85rem; display: block; margin-top: 4px;">(Klik materi untuk melihat detail pembelajaran)</small>
+            </h4>
+            <div id="modalSubjectGrid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px;">
+              <!-- 8 dynamic subject card buttons go here -->
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 24px; margin-top: 12px; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 2.2rem;">⏳</span>
+            <div style="display: flex; flex-direction: column;">
+              <span style="font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Durasi Program:</span>
+              <span id="modalDurValue" style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">3 Bulan (12 Pertemuan)</span>
+            </div>
+          </div>
+          <a href="https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20dengan%20program%20ini" class="modal-btn" target="_blank" style="background: #fa5d5d; color: white; text-decoration: none; padding: 14px 28px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-align: center; box-shadow: 0 4px 0 #c44545; transition: 0.2s;">Daftar Trial Class Sekarang →</a>
+        </div>
+      </div>
+
+      <!-- SCREEN 2: SUBJECT DETAIL -->
+      <div id="modalSubjectScreen" class="modal-screen" style="display: none; flex-direction: column; gap: 24px;">
+        <button id="backToMainBtn" class="modal-back-btn" style="background: #f1f5f9; border: none; border-radius: 20px; padding: 10px 20px; display: inline-flex; align-items: center; gap: 8px; color: #475569; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; width: fit-content;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Kembali ke Program</span>
+        </button>
+
+        <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 4px;">
+          <div style="display: flex; align-items: center; gap: 18px;">
+            <span id="subDetailIcon" style="font-size: 2.5rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 18px; display: flex; align-items: center; justify-content: center;">💻</span>
+            <div style="display: flex; flex-direction: column;">
+              <span id="subDetailCategory" style="font-size: 0.82rem; font-weight: 800; color: #40A18B; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Explorer (Usia 5–7 Tahun)</span>
+              <h3 id="subDetailTitle" style="font-size: 1.85rem; font-weight: 900; color: #0f172a; margin: 0; line-height: 1.2;">Coding</h3>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 8px;">
+            <!-- Left Column: Description and Context -->
+            <div style="display: flex; flex-direction: column; gap: 20px; justify-content: space-between;">
+              <p id="subDetailDesc" style="font-size: 1.05rem; color: #475569; line-height: 1.7; margin: 0;">Detailed subject description goes here...</p>
+              
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+                <span style="font-size: 2.5rem; line-height: 1;">🌟</span>
+                <span style="font-size: 0.95rem; color: #334155; font-weight: 700; line-height: 1.4;">Belajar dengan mentor terbaik & kurikulum berstandar internasional untuk anak.</span>
+              </div>
+            </div>
+
+            <!-- Right Column: Benefits and Learning Points -->
+            <div style="background: #fcfdfd; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+              <h4 style="font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin: 0;">Manfaat Pembelajaran:</h4>
+              <ul id="subDetailPoints" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                <!-- Subject points dynamically inserted here -->
+              </ul>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid #f1f5f9; padding-top: 24px; margin-top: 12px;">
+            <a href="https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20dengan%20kelas" class="modal-btn" target="_blank" style="background: #fa5d5d; color: white; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-weight: 800; font-size: 1.05rem; text-align: center; box-shadow: 0 4px 0 #c44545; transition: 0.2s; width: 100%; display: block;">Daftar Kelas Materi Ini →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .subject-card-btn {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  .subject-card-btn:hover {
+    background: #f8fafc !important;
+    border-color: #40A18B !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.08) !important;
+  }
+  .subject-card-btn:hover svg {
+    transform: translateX(5px) !important;
+    opacity: 1 !important;
+  }
+  .pksec {
+    padding: 80px 0;
+    position: relative;
+    background: transparent;
+  }
+  .pksec__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .pksec__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .pksec__eyebrow {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--pika-blue);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .pksec__heading {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+  .pksec__sub {
+    font-size: 1.05rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .pksec__carousel-wrapper {
+    position: relative;
+    padding: 0 3rem;
+  }
+  .pk-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+  }
+  .pk-nav-btn:hover {
+    background: #40A18B;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+  .pk-prev { left: 0; }
+  .pk-next { right: 0; }
+
+  .pk-card {
+    background: #ffffff;
+    border-radius: 28px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pk-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+  }
+
+  .pk-card__img-wrap {
+    position: relative;
+    padding-top: 62%;
+    background: var(--lt);
+    overflow: hidden;
+  }
+  .pk-card__img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .pk-card:hover .pk-card__img {
+    transform: scale(1.04);
+  }
+  .pk-card__age {
+    position: absolute;
+    top: 15px; left: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  .pk-card__level {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: var(--ac);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .pk-card__body {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .pk-card__title {
+    font-size: 1.65rem;
+    font-weight: 900;
+    color: var(--ac);
+    margin-bottom: 0.85rem;
+  }
+  .pk-card__desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .pk-card__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .pk-card__tag {
+    background: var(--tg);
+    color: #1e293b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  .pk-card__foot {
+    padding: 0 2rem 2rem;
+  }
+  .pk-card__btn {
+    width: 100%;
+    border: none;
+    background: var(--ac);
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .pk-card__btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+
+  .modal-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+  .pika-modal__close:hover {
+    background: #e2e8f0; color: #1e293b; transform: rotate(90deg);
+  }
+  .modal-back-btn:hover {
+    background: #e2e8f0; color: #0f172a; transform: translateX(-3px);
+  }
+
+  @media (max-width: 768px) {
+    #modalSubjectGrid { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.pk-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      grabCursor: true,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      pagination: {
+        el: '.pk-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.pk-next',
+        prevEl: '.pk-prev',
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    // Subject icons lookup
+    const subjectIcons = {
+      'Public Speaking': '🎤',
+      'Literasi Keuangan dan Kewirausahaan': '💰',
+      'Renang': '🏊',
+      'Seni Lukis': '🎨',
+      'Seni Musik': '🎵',
+      'Coding': '💻',
+      'Tahsin': '📖',
+      'Tahfidz': '🕋'
+    };
+
+    // Advanced, highly-tailored static lookup data for all age categories
+    const programDetails = {
+      'Explorer': {
+        title: 'Explorer',
+        age: 'Usia 5 – 7 Tahun',
+        level: 'Pemula',
+        desc: 'Membangun fondasi kepercayaan diri, kemandirian, dan karakter anak melalui pengalaman belajar yang menyenangkan, interaktif, serta mendorong eksplorasi potensi diri sejak dini.',
+        dur: '3 Bulan (12 Pertemuan)',
+        accent: '#40A18B',
+        subjects: [
+          {
+            name: 'Public Speaking',
+            desc: 'Melatih anak usia 5–7 tahun untuk berani berbicara di depan umum secara menyenangkan, mengenalkan etika menyapa, dan melatih kesantunan.',
+            points: ['Berani tampil tanpa ragu', 'Menggunakan kata-kata yang santun', 'Melatih fokus pandangan mata']
+          },
+          {
+            name: 'Literasi Keuangan dan Kewirausahaan',
+            desc: 'Mengenalkan konsep dasar nilai uang, pentingnya menabung, dan berbagi secara sederhana.',
+            points: ['Memahami kegunaan uang', 'Belajar menyisihkan uang saku', 'Mengenal konsep berbagi sejak dini']
+          },
+          {
+            name: 'Renang',
+            desc: 'Membangun rasa percaya diri di dalam air, teknik meluncur dasar, serta cara bernapas yang benar.',
+            points: ['Mengenal kenyamanan air', 'Menguasai teknik dasar meluncur', 'Belajar keamanan dasar di kolam']
+          },
+          {
+            name: 'Seni Lukis',
+            desc: 'Eksplorasi kreativitas menggunakan berbagai media warna untuk melatih motorik halus dan koordinasi mata-tangan.',
+            points: ['Mengenal berbagai warna ceria', 'Mencampur warna dasar', 'Menggambar bentuk sederhana']
+          },
+          {
+            name: 'Seni Musik',
+            desc: 'Memperkenalkan ritme, melodi, dan ketukan dasar melalui lagu-lagu ceria serta alat musik perkusi sederhana.',
+            points: ['Mengikuti ketukan irama', 'Mengenal nada do-re-mi', 'Bernyanyi dan bergerak kompak']
+          },
+          {
+            name: 'Coding',
+            desc: 'Mengajarkan logika dasar pemrograman dengan cara yang menyenangkan melalui permainan visual/blok ramah anak.',
+            points: ['Memahami urutan instruksi (sequence)', 'Menyelesaikan puzzle logika sederhana', 'Melatih kreativitas tanpa layar berlebihan']
+          },
+          {
+            name: 'Tahsin',
+            desc: 'Membimbing anak melafalkan huruf hijaiyah dengan makhraj yang tepat melalui metode bernyanyi yang seru.',
+            points: ['Mengenal huruf hijaiyah berharakat', 'Melafalkan makhraj secara tepat', 'Meningkatkan kecintaan membaca Al-Qur\'an']
+          },
+          {
+            name: 'Tahfidz',
+            desc: 'Mengajak anak menghafal surat-surat pendek dalam Juz Amma dengan metode talqin/mengulang bersama.',
+            points: ['Menghafal surat Al-Fatihah & An-Nas s/d Al-Ikhlas', 'Melatih kelancaran hafalan harian', 'Membangun karakter islami sejak dini']
+          }
+        ]
+      },
+      'Innovator': {
+        title: 'Innovator',
+        age: 'Usia 8 – 11 Tahun',
+        level: 'Menengah',
+        desc: 'Mengembangkan kemampuan berpikir kreatif, komunikasi, dan kerja sama melalui proses belajar yang lebih terarah, sekaligus membantu anak mulai mengenali minat dan potensinya.',
+        dur: '4 Bulan (16 Pertemuan)',
+        accent: '#E09B10',
+        subjects: [
+          {
+            name: 'Public Speaking',
+            desc: 'Melatih anak usia 8–11 tahun teknik berbicara berstruktur, intonasi suara yang jelas, serta ekspresi wajah.',
+            points: ['Menyusun pembukaan presentasi yang menarik', 'Mengontrol volume and tempo bicara', 'Percaya diri membawakan cerita/storytelling']
+          },
+          {
+            name: 'Literasi Keuangan dan Kewirausahaan',
+            desc: 'Mengenalkan cara mengelola uang saku, menyusun anggaran sederhana, serta konsep pembuatan produk kreatif.',
+            points: ['Mengatur prioritas kebutuhan vs keinginan', 'Belajar perencanaan menabung target', 'Mengenalkan ide bisnis kecil/kreatif']
+          },
+          {
+            name: 'Renang',
+            desc: 'Mengembangkan penguasaan gaya bebas dan gaya dada secara baik serta meningkatkan daya tahan fisik anak.',
+            points: ['Menguasai gerakan kayuhan tangan yang efisien', 'Meningkatkan ritme kayuhan kaki', 'Membangun stamina berenang lebih jauh']
+          },
+          {
+            name: 'Seni Lukis',
+            desc: 'Mengembangkan teknik menggambar yang lebih proporsional dan penguasaan perpaduan gradasi warna.',
+            points: ['Memahami proporsi objek gambar', 'Menggunakan teknik pencampuran warna gradasi', 'Melukis tema alam dan imajinasi kreatif']
+          },
+          {
+            name: 'Seni Musik',
+            desc: 'Melatih kepekaan nada, membaca notasi balok sederhana, serta memainkan instrumen musik pilihan.',
+            points: ['Membaca notasi nada dasar', 'Memainkan ritme menggunakan pianika/keyboard', 'Bermain musik dalam kelompok kecil']
+          },
+          {
+            name: 'Coding',
+            desc: 'Belajar membuat animasi dan game interaktif mini menggunakan platform Scratch atau Blockly.',
+            points: ['Memahami logika percabangan (if-else) & loop', 'Membuat game sederhana dengan kontrol keyboard', 'Mengembangkan kemampuan pemecahan masalah']
+          },
+          {
+            name: 'Tahsin',
+            desc: 'Memperbaiki bacaan Al-Qur\'an anak sesuai dengan kaidah tajwid dasar seperti Izhar dan Idgam.',
+            points: ['Memperbaiki makhraj huruf yang sering tertukar', 'Mengenal panjang-pendek bacaan (mad)', 'Mempraktikkan tajwid dasar secara langsung']
+          },
+          {
+            name: 'Tahfidz',
+            desc: 'Menambah dan memantapkan hafalan surat-surat dalam Juz 30 dengan tartil yang benar.',
+            points: ['Melanjutkan hafalan dari surat An-Naba s/d Ad-Duha', 'Menguatkan hafalan melalui setoran berkala', 'Memahami arti singkat dari surat yang dihafal']
+          }
+        ]
+      },
+      'Leader': {
+        title: 'Leader',
+        age: 'Usia 12 – 15 Tahun',
+        level: 'Lanjutan',
+        desc: 'Mengasah kepemimpinan, kemampuan berpikir kritis, dan kepercayaan diri untuk mempersiapkan remaja menghadapi tantangan masa depan secara mandiri dan bertanggung jawab.',
+        dur: '6 Bulan (24 Pertemuan)',
+        accent: '#D94040',
+        subjects: [
+          {
+            name: 'Public Speaking',
+            desc: 'Mengasah kemampuan berdebat secara rasional, teknik persuasi audiens, dan kepemimpinan strategis.',
+            points: ['Menyusun argumen berbasis data/fakta', 'Menghadapi pertanyaan atau sanggahan dengan tenang', 'Teknik pidato motivasional yang menginspirasi']
+          },
+          {
+            name: 'Literasi Keuangan dan Kewirausahaan',
+            desc: 'Pembelajaran manajemen keuangan pribadi serta penyusunan rencana bisnis (business plan) sederhana.',
+            points: ['Menganalisis pendapatan & pengeluaran bulanan', 'Membuat proyeksi anggaran bisnis sederhana', 'Mengasah keterampilan negosiasi & pemasaran']
+          },
+          {
+            name: 'Renang',
+            desc: 'Pendalaman teknik renang gaya bebas, dada, dan punggung tingkat lanjut untuk kecepatan dan ketahanan.',
+            points: ['Memaksimalkan kecepatan kayuhan (speed drill)', 'Meningkatkan kapasitas paru-paru', 'Mempraktikkan teknik pembalikan (flip turn)']
+          },
+          {
+            name: 'Seni Lukis',
+            desc: 'Melukis karya seni ekspresif menggunakan media warna air atau akrilik di atas kanvas.',
+            points: ['Mengenal media kanvas & cat akrilik', 'Mengekspresikan tema kompleks atau abstrak', 'Teknik sapuan kuas tingkat lanjut (shading & lighting)']
+          },
+          {
+            name: 'Seni Musik',
+            desc: 'Apresiasi musik tingkat lanjut, dasar komposisi aransemen, dan bernyanyi secara vokal grup.',
+            points: ['Memahami struktur akor dan progresi nada', 'Mencoba membuat melodi lagu orisinal', 'Harmonisasi suara dalam kelompok']
+          },
+          {
+            name: 'Coding',
+            desc: 'Mengenalkan logika pemrograman terapan menggunakan Python dasar atau pemrograman web HTML/CSS.',
+            points: ['Membuat program teks sederhana (Python)', 'Mengerti sintaks variabel, fungsi, dan kondisi', 'Membuat kerangka halaman web portofolio']
+          },
+          {
+            name: 'Tahsin',
+            desc: 'Menyempurnakan bacaan Al-Qur\'an secara fasih dengan penerapan seluruh hukum tajwid tingkat lanjut.',
+            points: ['Menguasai waqaf dan ibtida\' (berhenti & memulai)', 'Fasih melafalkan makhraj dengan tebal-tipis', 'Membaca Al-Qur\'an secara tartil berstandar']
+          },
+          {
+            name: 'Tahfidz',
+            desc: 'Menguatkan hafalan Juz 30 dan memulai hafalan pada Juz 29 serta pembinaan karakter qur\'ani.',
+            points: ['Menguasai mutqin Juz 30', 'Memulai hafalan Juz 29 (Al-Mulk s/d Al-Mursalat)', 'Menjaga hafalan dengan muroja\'ah mandiri']
+          }
+        ]
+      }
+    };
+
+    let activeCategory = 'Explorer';
+
+    const modal = document.getElementById('programModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const overlay = document.querySelector('.pika-modal__overlay');
+    
+    const mainScreen = document.getElementById('modalMainScreen');
+    const subjectScreen = document.getElementById('modalSubjectScreen');
+    const backBtn = document.getElementById('backToMainBtn');
+
+    function openModal(title) {
+      const data = programDetails[title];
+      if (!modal || !data) return;
+
+      activeCategory = title;
+
+      // Fill screen 1 (main program)
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalAge').innerText = data.age;
+      document.getElementById('modalLevel').innerText = data.level;
+      document.getElementById('modalDesc').innerText = data.desc;
+      document.getElementById('modalDurValue').innerText = data.dur;
+
+      // Color accent override on level tag
+      const lvl = document.getElementById('modalLevel');
+      if (lvl) lvl.style.background = data.accent;
+
+      // Render Subject cards grid (First Screen)
+      const grid = document.getElementById('modalSubjectGrid');
+      grid.innerHTML = '';
+      data.subjects.forEach(sub => {
+        const icon = subjectIcons[sub.name] || '✦';
+        
+        const cardBtn = document.createElement('button');
+        cardBtn.className = 'subject-card-btn';
+        cardBtn.style.cssText = "background: #fdfefe; border: 1px solid #cbd5e1; padding: 16px 20px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; text-align: left; transition: all 0.2s ease; width: 100%; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);";
+        cardBtn.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <span style="font-size: 1.8rem; background: #f8fafc; padding: 8px 12px; border-radius: 14px; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">${icon}</span>
+            <span style="font-size: 1rem; font-weight: 800; color: #0f172a; line-height: 1.3;">${sub.name}</span>
+          </div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${data.accent}" stroke-width="2.5" style="opacity: 0.7; transition: transform 0.2s; margin-left: auto; flex-shrink: 0;"><path d="m9 18 6-6-6-6"/></svg>
+        `;
+        cardBtn.addEventListener('click', () => openSubjectDetail(sub));
+        grid.appendChild(cardBtn);
+      });
+
+      // Show first screen & open modal
+      mainScreen.style.display = 'flex';
+      subjectScreen.style.display = 'none';
+
+      modal.style.display = 'flex';
+      // Smooth fade in
+      setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.setAttribute('aria-hidden', 'false');
+      }, 10);
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openSubjectDetail(subject) {
+      if (!mainScreen || !subjectScreen) return;
+      
+      const data = programDetails[activeCategory];
+      const icon = subjectIcons[subject.name] || '✦';
+
+      // Fill screen 2 (subject detail)
+      document.getElementById('subDetailIcon').innerText = icon;
+      document.getElementById('subDetailCategory').innerText = `${data.title} (${data.age})`;
+      document.getElementById('subDetailTitle').innerText = subject.name;
+      document.getElementById('subDetailDesc').innerText = subject.desc;
+
+      // Bullet points for benefits
+      const pointsUl = document.getElementById('subDetailPoints');
+      pointsUl.innerHTML = '';
+      subject.points.forEach(pt => {
+        const li = document.createElement('li');
+        li.style.cssText = "display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #334155; font-weight: 500; line-height: 1.5;";
+        li.innerHTML = `<span style="color: #40A18B; font-weight: 900;">✦</span><span>${pt}</span>`;
+        pointsUl.appendChild(li);
+      });
+
+      // Slide in transition
+      mainScreen.style.display = 'none';
+      subjectScreen.style.display = 'flex';
+    }
+
+    function backToMainScreen() {
+      if (!mainScreen || !subjectScreen) return;
+      subjectScreen.style.display = 'none';
+      mainScreen.style.display = 'flex';
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.style.opacity = '0';
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }, 350);
+    }
+
+    document.querySelectorAll('.open-modal-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const titleId = this.getAttribute('data-program-id');
+        openModal(titleId);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+    if (backBtn) backBtn.addEventListener('click', backToMainScreen);
+
+    // Escape closes modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  });
+</script>

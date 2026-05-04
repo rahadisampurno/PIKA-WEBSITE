@@ -1,0 +1,47 @@
+---
+---
+<section class="hero-pika" id="hero">
+  <div class="hero-container">
+    <img src="/assets/BG_Hero.png" alt="PIKA Skill Space" class="hero-image" />
+  </div>
+</section>
+
+<style>
+  .hero-pika {
+    width: 100%;
+    position: relative;
+    background-color: #FDF9F0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Responsivitas untuk memastikan gambar tidak terlalu tinggi di monitor lebar */
+  @media (min-width: 1921px) {
+    .hero-image {
+      max-height: 95vh;
+    }
+  }
+
+  /* Mobile: Pastikan konten tetap terlihat proporsional */
+  @media (max-width: 768px) {
+    .hero-image {
+      min-height: 480px;
+    }
+  }
+</style>

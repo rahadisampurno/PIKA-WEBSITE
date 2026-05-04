@@ -1,0 +1,235 @@
+---
+const testimonials = [
+  {
+    text: "Anak saya jadi lebih percaya diri dan berani berbicara di depan umum. PIKA benar-benar program yang menyenangkan dan bermanfaat!",
+    author: "Ibu Rina, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Mentornya luar biasa sabar dan seru! Setiap kelas selalu dinanti anak saya. Kreativitasnya juga berkembang pesat.",
+    author: "Bapak Andi, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Tidak hanya public speaking, tapi anak saya juga belajar kerja sama dan menghargai pendapat orang lain.",
+    author: "Ibu Siti, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Metode belajarnya sangat interaktif. Anak saya yang tadinya pemalu sekarang jadi berani tampil di depan kelas.",
+    author: "Ibu Dewi, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Terima kasih PIKA! Anak kami sekarang bisa memimpin diskusi kelompok dengan baik dan penuh percaya diri.",
+    author: "Bapak Budi, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Perubahan anak saya luar biasa setelah ikut program ini. Cara bicaranya lebih terstruktur dan berbobot.",
+    author: "Ibu Mega, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Pengalaman belajar yang sangat menyenangkan. Anak-anak diajak berpikir kritis melalui aktivitas yang seru.",
+    author: "Bapak Anton, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Anak saya sangat menyukai mentor-mentornya yang ramah dan suportif. Dia selalu antusias menceritakan apa yang dipelajari.",
+    author: "Ibu Sari, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Program PIKA membantu melatih fokus dan kemampuan mendengarkan anak. Sangat merekomendasikan!",
+    author: "Bapak Hasan, Orang Tua Siswa",
+    rating: 5
+  },
+  {
+    text: "Anak saya merasa didukung penuh oleh mentor untuk mengeksplorasi kemampuannya. Percaya dirinya meningkat tajam.",
+    author: "Ibu Dina, Orang Tua Siswa",
+    rating: 5
+  }
+];
+---
+
+<section id="testimoni" class="testimonials-section">
+  <div class="testimonials-inner relative">
+    <h2 class="section-title">✦ KATA ORANG TUA ✦</h2>
+    
+    <div class="testi-carousel-wrapper">
+      <!-- Floating Navigation Buttons -->
+      <button class="testi-nav-btn testi-prev" aria-label="Previous">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="testi-nav-btn testi-next" aria-label="Next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <!-- Swiper container -->
+      <div class="swiper testi-swiper">
+        <div class="swiper-wrapper">
+          {testimonials.map(t => (
+            <div class="swiper-slide">
+              <div class="testi-card clay-card">
+                <div class="quote-icon">“</div>
+                <p class="testi-text">{t.text}</p>
+                <div class="stars">{'⭐'.repeat(t.rating)}</div>
+                <div class="testi-author">- {t.author}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination testi-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    background-image: url('/assets/BG_KataOrangTua.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-size: cover !important;
+    overflow: hidden;
+  }
+
+  .testimonials-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .testi-carousel-wrapper {
+    position: relative;
+    margin-top: 3.5rem;
+    padding: 0 3.5rem;
+  }
+
+  .testi-swiper {
+    padding-bottom: 3.5rem !important;
+    overflow: hidden;
+  }
+
+  .testi-card {
+    position: relative;
+    padding: 3.5rem 2rem 2.5rem;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .testi-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+  }
+
+  .quote-icon {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 4.5rem;
+    color: #f59e0b;
+    font-family: serif;
+    opacity: 0.25;
+    line-height: 1;
+  }
+
+  .testi-text {
+    font-style: italic;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .stars { margin-bottom: 0.8rem; font-size: 1.25rem; }
+
+  .testi-author {
+    font-weight: 800;
+    color: #475569;
+    font-size: 0.95rem;
+  }
+
+  /* Swiper Navigation buttons overlaying neatly */
+  .testi-nav-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    color: #2D3E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    z-index: 10;
+    transition: 0.3s;
+  }
+
+  .testi-nav-btn:hover {
+    background: #40A18B;
+    color: white;
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .testi-prev { left: 0; }
+  .testi-next { right: 0; }
+
+  @media (max-width: 768px) {
+    .testi-carousel-wrapper { padding: 0; }
+    .testi-nav-btn { display: none; }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.testi-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 28,
+      grabCursor: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.testi-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.testi-next',
+        prevEl: '.testi-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+  });
+</script>

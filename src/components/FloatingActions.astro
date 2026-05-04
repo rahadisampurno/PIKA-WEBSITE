@@ -1,0 +1,118 @@
+---
+---
+<div class="floating-container">
+  <a href="https://wa.me/6285196046014" target="_blank" class="wa-float">
+    <span>HUBUNGI KAMI</span>
+    <div class="wa-icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path fill="#25D366" d="M12.031 6.172c-2.32 0-4.518.953-6.19 2.684-1.673 1.73-2.593 4.032-2.59 6.482 0 2.223.779 4.397 2.198 6.155l-1.439 5.253 5.37-1.41c1.688.922 3.585 1.408 5.514 1.41h.005c2.321 0 4.519-.953 6.191-2.684 1.672-1.732 2.593-4.033 2.59-6.483.003-4.945-3.83-8.907-8.66-8.907zm5.103 12.139c-.21.591-1.213 1.134-1.68 1.185-.468.051-1.076.082-1.73-.133-.404-.132-.916-.312-1.579-.588-2.825-1.173-4.66-4.074-4.801-4.263-.14-.189-1.144-1.522-1.144-2.903 0-1.381.725-2.062 1.053-2.392.327-.33.725-.413 1.053-.413h.649c.21 0 .42-.016.607.413.21.517.725 1.763.787 1.888.062.126.104.271.021.438s-.125.27-.25.412c-.125.142-.262.247-.375.385-.125.143-.257.299-.111.551.146.252.651 1.074 1.396 1.741.96.858 1.768 1.123 2.057 1.25.29.127.46.105.632-.093.172-.199.742-.865.94-1.162.199-.297.397-.248.665-.148.269.1 1.716.809 2.013.957.297.148.497.223.57.348.073.124.073.723-.137 1.314z"/>
+      </svg>
+    </div>
+  </a>
+
+  <button id="scrollToTop" class="scroll-top">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</div>
+
+<script>
+  const scrollBtn = document.getElementById('scrollToTop');
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+  }
+</script>
+
+<style>
+  .floating-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 2000;
+  }
+
+  .wa-float {
+    background: #2D3E50;
+    padding: 10px 15px 10px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+  }
+
+  .wa-float span {
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  .wa-icon {
+    background: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wa-float:hover {
+    transform: translateY(-5px);
+    background: #36495b;
+  }
+
+  .scroll-top {
+    background: white;
+    border: 1px solid #ddd;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    color: #2D3E50;
+  }
+
+  .scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .scroll-top:hover {
+    background: #f8f8f8;
+    border-color: #ccc;
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .floating-container {
+      bottom: 20px;
+      right: 20px;
+    }
+    .wa-float span { display: none; }
+    .wa-float { padding: 10px; border-radius: 50%; }
+  }
+</style>

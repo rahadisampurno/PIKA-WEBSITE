@@ -1,0 +1,883 @@
+:root {
+  --pika-green: #40A18B;
+  --pika-yellow: #FFC03D;
+  --pika-red: #FA5D5D;
+  --pika-blue: #4D76B1;
+  --bg-light: #F8FBFD;
+  --text-dark: #2D3E50;
+  --text-muted: #6C7A89;
+  --white: #FFFFFF;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-pika: 0 10px 40px rgba(64, 161, 139, 0.2);
+  --radius-card: 32px;
+  --radius-btn: 50px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.clay-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  box-shadow: 
+    inset 0 -8px 0 rgba(0,0,0,0.05),
+    0 10px 30px rgba(0,0,0,0.05);
+  padding: 2rem;
+}
+
+.btn-pika {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-btn);
+  font-weight: 800;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background: var(--pika-green);
+  color: white;
+  box-shadow: 0 6px 0 #2D7A68;
+}
+
+.btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #2D7A68;
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--pika-green);
+  border: 2px solid var(--pika-green);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.section-title::before, .section-title::after {
+  content: "✦";
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+.flex { display: flex; align-items: center; justify-content: space-between; }
+
+/* ============================================================
+   PROGRAM KAMI — Reliable Card Styles
+============================================================ */
+
+/* Section */
+.pksec {
+  padding: 4rem 0 0;
+  background-color: white; /* Ubah ke putih agar menyatu dengan section bawah */
+  background-image: url('/assets/BG_Program.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.pksec__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header Alignment */
+.pksec__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+/* Carousel Side Navigation */
+.pksec__carousel-wrapper {
+  position: relative;
+  padding: 0 10px;
+}
+
+.pk-nav-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  border: 2px solid #e0e6ec;
+  background: white;
+  color: #1A2B3C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 0 #e0e6ec, 0 12px 24px rgba(0,0,0,0.05);
+}
+
+.pk-nav-btn.pk-prev {
+  left: -27px; /* Pull it slightly outward */
+}
+.pk-nav-btn.pk-next {
+  right: -27px; /* Pull it slightly outward */
+}
+
+.pk-nav-btn:hover:not(.swiper-button-disabled) {
+  background: #40A18B;
+  color: white;
+  border-color: #40A18B;
+  transform: translateY(-55%); /* Slightly more lift on hover */
+  box-shadow: 0 8px 0 rgba(64, 161, 139, 0.3), 0 15px 30px rgba(64, 161, 139, 0.15);
+}
+
+.pk-nav-btn:active:not(.swiper-button-disabled) {
+  transform: translateY(-40%);
+  box-shadow: 0 2px 0 #e0e6ec;
+}
+
+.pk-nav-btn.swiper-button-disabled {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Swiper adjustments */
+.pk-swiper {
+  padding: 10px 5px 65px !important;
+  margin: -10px -5px 0 !important;
+}
+.swiper-slide {
+  height: auto !important;
+}
+
+/* Pagination */
+.pk-pagination {
+  bottom: 0 !important;
+}
+.pk-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #cbd5e0;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.pk-pagination .swiper-pagination-bullet-active {
+  width: 25px;
+  border-radius: 5px;
+  background: #40A18B;
+}
+
+/* Hide side buttons on small screens for better UX */
+@media (max-width: 1100px) {
+  .pksec__carousel-wrapper {
+    padding: 0;
+  }
+  .pk-nav-btn {
+    display: none; /* Swipe is standard on mobile */
+  }
+}
+
+/* Card overrides for carousel */
+.pk-card {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 0 #e0e6ec;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.35s ease;
+  position: relative;
+}
+.pk-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--ac);
+  z-index: 1;
+}
+.pk-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 4px 0 #ccd2d8;
+}
+
+/* Image wrap */
+.pk-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.pk-card__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.pk-card:hover .pk-card__img {
+  transform: scale(1.05);
+}
+.pk-card__age {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  background: white;
+  color: #6B7C8E;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 14px 5px 12px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+.pk-card__level {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  background: var(--ac);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Body */
+.pk-card__body {
+  padding: 1.5rem 1.5rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--lt, #fff);
+}
+.pk-card__title {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--ac);
+  margin: 0;
+  line-height: 1;
+}
+.pk-card__desc {
+  font-size: 0.875rem;
+  color: #4A5568;
+  line-height: 1.6;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ============================================================
+   MENGAPA PIKA — Values Section (wpsec)
+============================================================ */
+
+.wpsec {
+  padding: 0;
+  margin-top: -70px; /* Menarik banner ke atas sedikit agar rapat dengan Program Kami tanpa memotong */
+  background-color: transparent;
+  background-image: url('/assets/BG_TentangKami.png');
+  background-repeat: no-repeat;
+  background-position: center top; /* Start from the very top */
+  background-size: cover;
+  position: relative;
+  z-index: 5;
+}
+
+.wpsec__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 110px 2rem 8rem; /* Memberikan ruang di atas untuk konten agar seimbang */
+}
+
+.wpsec__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.wpsec__eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #40A18B;
+  background: #e8f5f2;
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+}
+
+.wpsec__heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: #1A2B3C;
+  letter-spacing: -0.5px;
+  margin: 0 0 0.85rem;
+  line-height: 1.2;
+}
+
+.wpsec__sub {
+  font-size: 1.05rem;
+  color: #4A5568;
+  font-weight: 500;
+  line-height: 1.7;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Grid — 5 columns desktop */
+.wp-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+/* Card */
+.wp-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 32px;
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 
+    0 12px 34px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.wp-card:hover {
+  transform: translateY(-14px);
+  border-color: var(--wc);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.08),
+    0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.wp-card__icon {
+  width: 76px;
+  height: 76px;
+  background: var(--wb);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.35rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.wp-card:hover .wp-card__icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.wp-card__title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #1A2B3C;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.wp-card__desc {
+  font-size: 0.9rem;
+  color: #55667a;
+  line-height: 1.6;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .wp-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .wp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .wp-grid { grid-template-columns: 1fr; }
+  .wpsec { padding: 4rem 0; }
+}
+
+/* Tags */
+.pk-card__tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.pk-card__tag {
+  padding: 4px 12px;
+  background: var(--tg, #eee);
+  color: var(--ac);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Footer / CTA */
+.pk-card__foot {
+  padding: 0 1.5rem 1.5rem;
+  background: var(--lt, #fff);
+}
+.pk-card__btn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  background: var(--ac);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.15);
+}
+.pk-card__btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+.pk-card__btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.12);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pk-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .pk-grid { grid-template-columns: 1fr; }
+  .pksec__heading { font-size: 1.8rem; }
+}
+
+
+/* Force Product Cards grid to exactly 3 columns, 1 row */
+.product-cards ._card-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: auto !important;
+  gap: 1.5rem !important;
+  align-items: start;
+}
+
+.product-cards ._card-list > * {
+  grid-row: auto !important;
+}
+
+.pksec {
+  padding: 4rem 0 2rem;
+  background-color: #f0f6fb;
+  background-image: url('/assets/BG_Program.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  position: relative;
+}
+/* No overlay — background image shown clearly */
+.pksec__inner {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.pksec__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.pksec__eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #40A18B;
+  background: #e8f5f2;
+  padding: 5px 16px;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+.pksec__heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: #1A2B3C;
+  letter-spacing: -0.5px;
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+.pksec__sub {
+  font-size: 1rem;
+  color: #6B7C8E;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ============================================================
+   PROGRAM KAMI — Card Architecture (Reference Implementation)
+   @layer: reset, base, composition, features, utilities
+============================================================ */
+
+@layer features {
+  @scope (.scope.product-cards) to (.scope) {
+    :scope {
+      container: --scope / inline-size;
+    }
+
+    ._card-list > * {
+      grid-row: span 5;
+    }
+
+    ._card {
+      --_accent: var(--product-card--accent, #40A18B);
+      --_row-gap: 0.25rlh;
+      --_padding: 16px;
+      --_radius: 32px;
+      --_accent-contrast: oklch(from var(--_accent) sign(0.7 - l) 0 0);
+      --_inner-radius: calc(var(--_radius) - var(--_padding));
+      --_category-radius: 14px;
+      --_duration: 350ms;
+      --_has-hocus-on: ;
+      --_has-hocus-off: initial;
+
+      display: block grid;
+      grid-template-columns:
+        [--full-start --heading-start]
+        minmax(0, 1fr)
+        [--heading-end --price-start]
+        max-content
+        [--price-end --full-end];
+      grid-template-rows: subgrid;
+      gap: var(--_row-gap) 1rem;
+      padding: var(--_padding);
+      border-radius: var(--_radius);
+      box-shadow: 0 20px 40px -14px oklch(from black l c h / 20%);
+      background-color: var(--card-background, #fff);
+      color: var(--card-foreground, #2D3E50);
+    }
+
+    ._card:has(:any-link:hover) {
+      --_has-hocus-on: initial;
+      --_has-hocus-off: ;
+    }
+
+    ._card:has(:focus-visible) {
+      --_has-hocus-on: initial;
+      --_has-hocus-off: ;
+    }
+
+    ._card > * {
+      grid-column: --full;
+    }
+
+    ._card > ._thumbnail-stack {
+      grid-row: 1 / 2;
+    }
+
+    ._card > ._category {
+      z-index: 1;
+      grid-row: 1 / 2;
+      place-self: start;
+      max-inline-size: calc(100% - (var(--_category-radius) + var(--_inner-radius)));
+    }
+
+    ._card > ._heading {
+      grid-column: --heading;
+      align-self: center;
+    }
+
+    ._card > ._price {
+      grid-column: --price;
+      place-self: center end;
+    }
+
+    ._thumbnail-stack {
+      display: block grid;
+    }
+
+    ._thumbnail-stack > img {
+      grid-area: 1 / 1;
+      inline-size: 100%;
+    }
+
+    ._card img {
+      aspect-ratio: 16/9;
+      border-radius: var(--_inner-radius);
+      filter: url(#svg-inset-shadow);
+      object-fit: cover;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      ._card img {
+        transition-property: clip-path;
+        transition-duration: var(--_duration);
+        transition-timing-function: var(--_has-hocus-on, cubic-bezier(0.19, 1, 0.22, 1)) var(--_has-hocus-off, cubic-bezier(0.95, 0.05, 0.795, 0.035));
+      }
+    }
+
+    ._card img:nth-child(1 of ._card img) {
+      filter: brightness(0.85) saturate(0.8);
+    }
+
+    @media (any-hover) {
+      ._card img:nth-child(2 of ._card img) {
+        clip-path: var(--_has-hocus-on, inset(0 round var(--_inner-radius))) var(--_has-hocus-off, inset(100% round var(--_inner-radius)));
+      }
+    }
+
+    ._heading {
+      padding-block: calc(var(--_row-gap) * 2);
+      font-size: clamp(1.2rem, 2cqi, 1.6rem);
+      font-weight: 900;
+      color: var(--_accent);
+    }
+
+    ._price {
+      padding-block: 0.5em;
+      padding-inline: 1em;
+      border-radius: calc(infinity * 1px);
+      background-color: var(--_accent);
+      color: var(--_accent-contrast);
+      font-weight: 800;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    ._category {
+      position: relative;
+      align-content: center;
+      min-block-size: calc(var(--_category-radius) * 2);
+      padding-block: 0.6em;
+      padding-inline: 1.2em;
+      border-end-end-radius: var(--_category-radius);
+      background-color: var(--card-background, #fff);
+      filter: drop-shadow(4px 4px 2px oklch(from black l c h / 12%));
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #8D9FAF;
+    }
+
+    ._category::before,
+    ._category::after {
+      content: "";
+      position: absolute;
+      block-size: var(--_category-radius);
+      aspect-ratio: 1;
+      mask-image: radial-gradient(
+        circle at 100% 100%,
+        transparent var(--_category-radius),
+        red calc(var(--_category-radius) + 1px)
+      );
+      background-color: inherit;
+    }
+
+    ._category::before {
+      inset-block-start: 0;
+      inset-inline-start: 100%;
+    }
+
+    ._category::after {
+      inset-block-start: 100%;
+      inset-inline-start: 0;
+    }
+
+    ._description {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #566779;
+      font-weight: 600;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    ._tag-list {
+      padding-block: calc(var(--_row-gap) * 2);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    ._tag {
+      padding-block: 0.4em;
+      padding-inline: 0.9em;
+      border-radius: calc(infinity * 1px);
+      background-color: oklch(from var(--_accent) 90% 20% h);
+      color: oklch(from var(--_accent) 35% 20% h);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    ._button {
+      padding-block-end: calc(var(--_padding) / 2);
+    }
+  }
+
+  @scope (.scope.purchase-button) to (.scope) {
+    :scope {
+      --_background: var(--purchase-button--background, #40A18B);
+      --_background-hocus: oklch(from var(--_background) calc(l - 0.08) c h);
+      --_foreground: var(--purchase-button--foreground, #fff);
+      --_hocus-on: ;
+      --_hocus-off: initial;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 0.75ch;
+      padding: 0.9em 1.5em;
+      border: none;
+      border-radius: calc(infinity * 1px);
+      background-color: var(--_hocus-on, var(--_background-hocus)) var(--_hocus-off, var(--_background));
+      color: var(--_foreground);
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition-property: background-color, transform;
+      transition-duration: 250ms;
+      box-shadow: 0 6px 0 oklch(from var(--_background) calc(l - 0.15) calc(c * 0.8) h);
+    }
+
+    :scope:any-link:hover {
+      --_hocus-on: initial;
+      --_hocus-off: ;
+      transform: translateY(-2px);
+    }
+
+    :scope:focus-visible {
+      --_hocus-on: initial;
+      --_hocus-off: ;
+    }
+  }
+}
+
+@layer composition {
+  .grid {
+    --_c-fill-mode: var(--grid--fill-mode, auto-fit);
+    --_c-row-gap: var(--grid--row-gap, 1.5rem);
+    --_c-column-gap: var(--grid--column-gap, 1.5rem);
+    --_c-column-max-count: var(--grid--column-max-count, 3);
+    --_c-column-min-width: var(--grid--column-min-width, 18rem);
+    --_c-column-width-calculated: calc(
+      (100% - var(--_c-column-gap) * (var(--_c-column-max-count) - 1)) /
+        var(--_c-column-max-count)
+    );
+    --_c-column-width: min(
+      100%,
+      max(var(--_c-column-min-width), var(--_c-column-width-calculated))
+    );
+
+    display: block grid;
+    grid-template-columns: repeat(
+      var(--_c-fill-mode),
+      minmax(var(--_c-column-width), 1fr)
+    );
+    gap: var(--_c-row-gap) var(--_c-column-gap);
+  }
+
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cluster--gap, 0.5rem);
+    align-items: center;
+  }
+}
+
+@layer utilities {
+  .-fluid-text {
+    --_fluid-text--min-width: var(--fluid-text--min-width, 375);
+    --_fluid-text--max-width: var(--fluid-text--max-width, 1280);
+    --_fluid-text--min-font-size: var(--fluid-text--min-font-size, 14);
+    --_fluid-text--max-font-size: var(--fluid-text--max-font-size, 16);
+    --_fluid-text--base-font-size: var(--fluid-text--base-font-size, 16);
+    --_fluid-text--slope: calc(
+      (var(--_fluid-text--max-font-size) - var(--_fluid-text--min-font-size)) /
+        (var(--_fluid-text--max-width) - var(--_fluid-text--min-width))
+    );
+    --_fluid-text--intercept: calc(
+      var(--_fluid-text--min-font-size) - var(--_fluid-text--slope) *
+        var(--_fluid-text--min-width)
+    );
+    --_fluid-text--font-size: clamp(
+      calc(var(--_fluid-text--min-font-size) / var(--_fluid-text--base-font-size) * 1rem),
+      calc(var(--_fluid-text--slope) * 100vw + var(--_fluid-text--intercept) / var(--_fluid-text--base-font-size) * 1rem),
+      calc(var(--_fluid-text--max-font-size) / var(--_fluid-text--base-font-size) * 1rem)
+    );
+    font-size: var(--_fluid-text--font-size);
+  }
+
+  .-line-clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--line-clamp--limit, 3);
+  }
+}
+
+@layer base {
+  :root {
+    --card-foreground: #2D3E50;
+    --card-background: #ffffff;
+    --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+@property --card-background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --card-foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2D3E50;
+}
+
+

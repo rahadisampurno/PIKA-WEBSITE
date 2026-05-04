@@ -1,0 +1,62 @@
+---
+const benefits = [
+  {
+    title: 'Percaya Diri',
+    desc: 'Meningkatkan keberanian dan kepercayaan diri anak untuk tampil di depan umum.',
+    icon: '✨',
+    color: '#40A18B',
+    bg: '#e8f5f2'
+  },
+  {
+    title: 'Komunikasi Efektif',
+    desc: 'Melatih kemampuan menyampaikan ide secara jelas, runtut, dan mudah dipahami.',
+    icon: '💬',
+    color: '#E09B10',
+    bg: '#fef9eb'
+  },
+  {
+    title: 'Berpikir Kritis',
+    desc: 'Mengasah kreativitas dan kemampuan menganalisa masalah dari berbagai sudut pandang.',
+    icon: '🚀',
+    color: '#D94040',
+    bg: '#fff2f2'
+  },
+  {
+    title: 'Kerja Sama',
+    desc: 'Belajar berkolaborasi dalam tim dan menghargai perbedaan pendapat.',
+    icon: '👥',
+    color: '#6366F1',
+    bg: '#eef2ff'
+  },
+  {
+    title: 'Skill Masa Depan',
+    desc: 'Membekali anak dengan soft skill esensial yang tidak diajarkan di sekolah formal.',
+    icon: '🎯',
+    color: '#EC4899',
+    bg: '#fdf2f8'
+  }
+];
+---
+
+<section id="why" class="wpsec">
+  <div class="wpsec__inner">
+
+    <header class="wpsec__header">
+      <h2 class="wpsec__heading">✦ Tentang PIKA ✦</h2>
+      <p class="wpsec__sub">
+        PIKA Skill Space adalah ruang belajar dan pengembangan diri untuk anak usia 5–15 tahun untuk membangun percaya diri, kreativitas, komunikasi, dan karakter positif. Melalui program yang seru dan interaktif, anak didampingi untuk berani tampil, aktif belajar, dan berkembang sesuai potensinya.
+      </p>
+    </header>
+
+    <div class="wp-grid">
+      {benefits.map(b => (
+        <div class="wp-card" style={`--wc: ${b.color}; --wb: ${b.bg};`}>
+          <div class="wp-card__icon">{b.icon}</div>
+          <h3 class="wp-card__title">{b.title}</h3>
+          <p class="wp-card__desc">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
