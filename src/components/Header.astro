@@ -23,8 +23,41 @@
     <div class="nav-action">
       <a href="https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20untuk%20mencoba%20Trial%20Class!" target="_blank" rel="noopener noreferrer" class="btn-trial">Coba Trial Class</a>
     </div>
+
+    <button class="hamburger-btn" aria-label="Menu" id="hamburgerBtn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
+      </svg>
+    </button>
   </nav>
 </header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-content">
+    <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <ul class="drawer-menu">
+      <li><a href="/" class="active">Beranda</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#why">Tentang PIKA</a></li>
+      <li><a href="#mentor">Mentor</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
+      <li><a href="#harga">Harga</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="drawer-action">
+      <a href="https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20untuk%20mencoba%20Trial%20Class!" target="_blank" rel="noopener noreferrer" class="btn-trial-drawer">Coba Trial Class</a>
+    </div>
+  </div>
+</div>
 
 <script is:inline>
   function setupHeaderBehavior() {
@@ -50,10 +83,43 @@
     update();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupHeaderBehavior);
-  } else {
+  function setupMobileDrawer() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerLinks = document.querySelectorAll('.drawer-menu a');
+
+    if (!hamburgerBtn || !mobileDrawer) return;
+
+    function openDrawer() {
+      mobileDrawer.classList.add('drawer-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      mobileDrawer.classList.remove('drawer-active');
+      document.body.style.overflow = '';
+    }
+
+    hamburgerBtn.addEventListener('click', openDrawer);
+    if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+  }
+
+  function init() {
     setupHeaderBehavior();
+    setupMobileDrawer();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 </script>
 
@@ -116,7 +182,152 @@
   .nav-menu a:hover, .nav-menu a.active { color: #FFC03D; }
   .btn-trial { background: #FA5D5D; color: white; text-decoration: none; padding: 10px 24px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 0 #c44545; transition: all 0.2s ease; display: inline-block; }
 
+  /* Hamburger button styles */
+  .hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #2D3E50;
+    cursor: pointer;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+  }
+  .hamburger-btn:hover {
+    color: #FFC03D;
+  }
+
+  /* Mobile Drawer styles */
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+  .mobile-drawer.drawer-active {
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+  .drawer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .drawer-content {
+    position: absolute;
+    top: 0;
+    right: -320px;
+    width: 280px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .mobile-drawer.drawer-active .drawer-content {
+    right: 0;
+  }
+  .drawer-close-btn {
+    align-self: flex-end;
+    background: #f1f5f9;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .drawer-close-btn:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+    transform: rotate(90deg);
+  }
+  .drawer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .drawer-menu a {
+    text-decoration: none;
+    color: #2D3E50;
+    font-size: 1.1rem;
+    font-weight: 800;
+    transition: color 0.3s;
+    display: block;
+  }
+  .drawer-menu a:hover, .drawer-menu a.active {
+    color: #FFC03D;
+  }
+  .drawer-action {
+    margin-top: auto;
+  }
+  .btn-trial-drawer {
+    background: #FA5D5D;
+    color: white;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 0 #c44545;
+    transition: all 0.2s ease;
+    display: block;
+  }
+  .btn-trial-drawer:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+
+  /* Responsive styles for Header and Navbar */
   @media (max-width: 1024px) {
     .nav-menu { display: none; }
+    .hamburger-btn { display: flex; }
+    .pika-navbar {
+      opacity: 0.95 !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+      border: 1px solid rgba(255,255,255,0.7) !important;
+      padding: 8px 16px;
+      border-radius: 40px;
+    }
+    .pika-header-container {
+      top: 10px;
+      padding: 0 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .logo-sub { display: none; }
+    .logo-title { font-size: 1rem; }
+    .logo-img { width: 36px; height: 36px; }
+  }
+
+  @media (max-width: 576px) {
+    .nav-action { display: none; }
   }
 </style>
