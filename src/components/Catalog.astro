@@ -181,7 +181,7 @@ const programs = [
           </div>
 
           <div style="border-top: 1px solid #f1f5f9; padding-top: 24px; margin-top: 12px;">
-            <a href="https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20dengan%20kelas" class="modal-btn" target="_blank" style="background: #fa5d5d; color: white; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-weight: 800; font-size: 1.05rem; text-align: center; box-shadow: 0 4px 0 #c44545; transition: 0.2s; width: 100%; display: block;">Daftar Kelas Materi Ini →</a>
+            <a id="subEnrollBtn" href="https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20dengan%20kelas" class="modal-btn" target="_blank" style="background: #fa5d5d; color: white; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-weight: 800; font-size: 1.05rem; text-align: center; box-shadow: 0 4px 0 #c44545; transition: 0.2s; width: 100%; display: block;">Daftar Kelas Materi Ini →</a>
           </div>
         </div>
       </div>
@@ -621,16 +621,22 @@ const programs = [
       grid.innerHTML = '';
       data.subjects.forEach(sub => {
         const icon = subjectIcons[sub.name] || '✦';
+        const isLocked = sub.name !== 'Public Speaking';
         
         const cardBtn = document.createElement('button');
         cardBtn.className = 'subject-card-btn';
         cardBtn.style.cssText = "background: #fdfefe; border: 1px solid #cbd5e1; padding: 16px 20px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; text-align: left; transition: all 0.2s ease; width: 100%; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);";
+        
+        const rightIcon = isLocked 
+          ? `<span style="font-size: 1.25rem; display: flex; align-items: center; justify-content: center; margin-left: auto; flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));">🔒</span>`
+          : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${data.accent}" stroke-width="2.5" style="opacity: 0.7; transition: transform 0.2s; margin-left: auto; flex-shrink: 0;"><path d="m9 18 6-6-6-6"/></svg>`;
+
         cardBtn.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 16px; opacity: ${isLocked ? 0.75 : 1};">
             <span style="font-size: 1.8rem; background: #f8fafc; padding: 8px 12px; border-radius: 14px; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">${icon}</span>
             <span style="font-size: 1rem; font-weight: 800; color: #0f172a; line-height: 1.3;">${sub.name}</span>
           </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${data.accent}" stroke-width="2.5" style="opacity: 0.7; transition: transform 0.2s; margin-left: auto; flex-shrink: 0;"><path d="m9 18 6-6-6-6"/></svg>
+          ${rightIcon}
         `;
         cardBtn.addEventListener('click', () => openSubjectDetail(sub));
         grid.appendChild(cardBtn);
@@ -671,6 +677,29 @@ const programs = [
         li.innerHTML = `<span style="color: #40A18B; font-weight: 900;">✦</span><span>${pt}</span>`;
         pointsUl.appendChild(li);
       });
+
+      // Handle lock status of enroll button
+      const isLocked = subject.name !== 'Public Speaking';
+      const enrollBtn = document.getElementById('subEnrollBtn');
+      if (enrollBtn) {
+        if (isLocked) {
+          enrollBtn.innerHTML = '🔒 Daftar Kelas Materi Ini (Segera Hadir)';
+          enrollBtn.removeAttribute('href');
+          enrollBtn.style.background = '#94a3b8';
+          enrollBtn.style.color = '#cbd5e1';
+          enrollBtn.style.boxShadow = '0 4px 0 #64748b';
+          enrollBtn.style.cursor = 'not-allowed';
+          enrollBtn.style.pointerEvents = 'none';
+        } else {
+          enrollBtn.innerHTML = 'Daftar Kelas Materi Ini →';
+          enrollBtn.setAttribute('href', `https://wa.me/6285196046014?text=Halo%20PIKA,%20saya%20tertarik%20dengan%20kelas%20${encodeURIComponent(subject.name)}%20di%20program%20${encodeURIComponent(data.title)}`);
+          enrollBtn.style.background = '#fa5d5d';
+          enrollBtn.style.color = 'white';
+          enrollBtn.style.boxShadow = '0 4px 0 #c44545';
+          enrollBtn.style.cursor = 'pointer';
+          enrollBtn.style.pointerEvents = 'auto';
+        }
+      }
 
       // Slide in transition
       mainScreen.style.display = 'none';

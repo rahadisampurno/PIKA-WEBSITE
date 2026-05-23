@@ -1,26 +1,30 @@
 ---
 const mentors = [
-  { name: 'Kak Dinda', role: 'Public Speaking & Communication', color: 'var(--pika-yellow)' },
-  { name: 'Kak Rio', role: 'Storytelling & Creativity', color: 'var(--pika-green)' },
-  { name: 'Kak Salsa', role: 'Leadership & Team Building', color: 'var(--pika-red)' }
+  { name: 'Kak nisa', role: 'COO/ Operations', color: 'var(--pika-red)', image: '/assets/nisa.png', ig: 'nisaadk' },
+  { name: 'Kak Anisa', role: 'CEO/Lead', color: 'var(--pika-green)', image: '/assets/anisa.jpg', ig: 'dipusparaga' },
+  { name: 'Kak Bintang', role: 'CMO/ Growth', color: 'var(--pika-yellow)', image: '/assets/bintang.png', ig: 'Bintangads' }
 ];
 ---
 
 <section id="mentor" class="mentors-section" style="background-image: url('/assets/BG_MentorKami.png'); background-repeat: no-repeat; background-position: center top; background-size: cover;">
   <div class="mentors-inner">
-    <h2 class="section-title">✦ MENTOR KAMI ✦</h2>
+    <h2 class="section-title">✦ TIM PIKA ✦</h2>
     <div class="mentor-grid">
       {mentors.map(m => (
         <div class="ref-card">
           <div class="img-bx">
-             <div class="img-placeholder" style={`border-color: ${m.color}`}>👤</div>
+             {m.image ? (
+               <img src={m.image} alt={m.name} class="mentor-img" style={`border-color: ${m.color}`} />
+             ) : (
+               <div class="img-placeholder" style={`border-color: ${m.color}`}>👤</div>
+             )}
           </div>
           <div class="content">
             <div class="detail">
               <h2>{m.name}<br /><span>{m.role}</span></h2>
               <ul class="sci">
                 <li>
-                  <a href="#" style={`--ac: ${m.color}`}><img src="https://api.iconify.design/lucide:instagram.svg?color=currentColor" width="18" alt="instagram"></a>
+                  <a href={`https://instagram.com/${m.ig}`} target="_blank" rel="noopener noreferrer" style={`--ac: ${m.color}`}><img src="https://api.iconify.design/lucide:instagram.svg?color=currentColor" width="18" alt="instagram"></a>
                 </li>
               </ul>
             </div>
@@ -125,6 +129,20 @@ const mentors = [
     justify-content: center;
     font-size: 5.5rem;
     color: #cbd5e1;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .mentor-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    border: 5px solid;
+    background-color: #f1f5f9;
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
   }
 
