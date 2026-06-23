@@ -1,0 +1,540 @@
+---
+// Pricing.astro
+---
+
+<section id="harga" class="pika-pricing-section">
+  <div class="pika-container">
+    
+    <div class="pika-header">
+      <span class="pika-eyebrow">Harga Program</span>
+      <h2 class="pika-title">PRICE LIST</h2>
+      <p class="pika-subtitle">Belajar Asyik, Tampil Percaya Diri, Siap Jadi Pemimpin Masa Depan!</p>
+      
+      <!-- Toggle Switch -->
+      <div class="pika-toggle-wrap">
+        <div class="pika-toggle">
+          <button class="pika-btn active" data-target="4x">PAKET 4X</button>
+          <button class="pika-btn" data-target="8x">PAKET 8X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pika-grid">
+      
+      <!-- MINI GROUP -->
+      <div class="pika-card">
+        <div class="pika-card-head bg-gradient-yellow">
+          <div class="pika-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="pika-card-title">MINI GROUP - OFFLINE</h3>
+          <p class="pika-card-desc">Belajar bersama teman dalam kelompok kecil (4-8 anak). Praktik lebih banyak, menyenangkan, dan interaktif!</p>
+          <div class="pika-badges">
+            <span>Explorer (5-7 thn)</span>
+            <span>Innovator (8-11 thn)</span>
+            <span>Leader (12-15 thn)</span>
+          </div>
+        </div>
+        <div class="pika-card-body">
+          <!-- 4X -->
+          <div class="pika-pkg pkg-4x active-pkg">
+            <h4 class="text-yellow">PAKET 4X</h4>
+            <div class="pika-price">Rp 399.000</div>
+            <div class="pika-session">(Rp 99.750 / sesi)</div>
+            <ul class="pika-features">
+              <li>4 sesi pembelajaran seru</li>
+              <li>Praktik & tampil setiap pertemuan</li>
+              <li>Progress Report</li>
+              <li>Badge PIKA</li>
+            </ul>
+          </div>
+          <!-- 8X -->
+          <div class="pika-pkg pkg-8x">
+            <h4 class="text-yellow">PAKET 8X</h4>
+            <div class="pika-price">Rp 749.000</div>
+            <div class="pika-session">(Rp 93.625 / sesi)</div>
+            <ul class="pika-features">
+              <li>Semua fasilitas Paket 4X</li>
+              <li>Sertifikat Level</li>
+              <li>Portofolio Digital</li>
+              <li>Video Highlight Penampilan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRIVATE CLASS -->
+      <div class="pika-card">
+        <div class="pika-float-badge float-purple">HASIL LEBIH FOKUS & MAKSIMAL!</div>
+        <div class="pika-card-head bg-gradient-purple">
+          <div class="pika-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <h3 class="pika-card-title">PRIVATE CLASS</h3>
+          <p class="pika-card-desc">Belajar 1-on-1 dengan mentor. Materi dan latihan disesuaikan dengan kebutuhan dan tujuan anak.</p>
+        </div>
+        <div class="pika-card-body">
+          <!-- 4X -->
+          <div class="pika-pkg pkg-4x active-pkg">
+            <h4 class="text-purple">PAKET 4X</h4>
+            <div class="pika-price">Rp 900.000</div>
+            <div class="pika-session">(Rp 225.000 / sesi)</div>
+            <ul class="pika-features">
+              <li>Pendampingan personal 1-on-1</li>
+              <li>Program belajar sesuai kebutuhan</li>
+              <li>Latihan lebih fokus & intensif</li>
+              <li>Progress Report Personal</li>
+            </ul>
+          </div>
+          <!-- 8X -->
+          <div class="pika-pkg pkg-8x">
+            <h4 class="text-purple">PAKET 8X</h4>
+            <div class="pika-price">Rp 1.700.000</div>
+            <div class="pika-session">(Rp 212.500 / sesi)</div>
+            <ul class="pika-features">
+              <li>Rekaman latihan (jika diperlukan)</li>
+              <li>Fleksibel jadwal</li>
+              <li>Persiapan lomba/presentasi sekolah</li>
+              <li>Evaluasi perkembangan individu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONLINE CLASS -->
+      <div class="pika-card">
+        <div class="pika-float-badge float-blue">FLEKSIBEL, TETAP SERU & EFEKTIF!</div>
+        <div class="pika-card-head bg-gradient-blue">
+          <div class="pika-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m10 13 4 4-4 4"></path></svg>
+          </div>
+          <h3 class="pika-card-title">ONLINE CLASS</h3>
+          <p class="pika-card-desc">Belajar fleksibel dari rumah bersama mentor berpengalaman secara live & interaktif!</p>
+        </div>
+        <div class="pika-card-body">
+          <!-- 4X -->
+          <div class="pika-pkg pkg-4x active-pkg">
+            <h4 class="text-blue">PAKET 4X</h4>
+            <div class="pika-price">Rp 299.000</div>
+            <div class="pika-session">(Rp 74.750 / sesi)</div>
+            <ul class="pika-features">
+              <li>Live via Zoom / Google Meet</li>
+              <li>Materi interaktif & menarik</li>
+              <li>Praktik & tampil setiap pertemuan</li>
+              <li>Progress Report Digital</li>
+            </ul>
+          </div>
+          <!-- 8X -->
+          <div class="pika-pkg pkg-8x">
+            <h4 class="text-blue">PAKET 8X</h4>
+            <div class="pika-price">Rp 549.000</div>
+            <div class="pika-session">(Rp 68.625 / sesi)</div>
+            <ul class="pika-features">
+              <li>Rekaman pembelajaran</li>
+              <li>Tugas kreatif & fun challenge</li>
+              <li>Portofolio Digital</li>
+              <li>Fleksibel dari mana saja</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Free Trial -->
+    <div class="pika-trial-banner">
+      <div class="trial-texts">
+        <h3>FREE TRIAL CLASS</h3>
+        <span class="trial-badge">Hanya Rp 100.000</span>
+        <p>Coba pengalaman belajar PIKA sebelum bergabung dalam program reguler.</p>
+      </div>
+      <a href="https://wa.me/6285196046014" target="_blank" class="trial-btn">DAFTAR SEKARANG!</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Gunakan is:inline agar script dieksekusi dengan benar tanpa diblok Astro -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtns = document.querySelectorAll('.pika-btn');
+    const pkgs4x = document.querySelectorAll('.pkg-4x');
+    const pkgs8x = document.querySelectorAll('.pkg-8x');
+
+    toggleBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        // Hapus kelas aktif dari semua tombol
+        toggleBtns.forEach(function(b) { b.classList.remove('active'); });
+        // Tambahkan kelas aktif ke tombol yang diklik
+        btn.classList.add('active');
+
+        const target = btn.getAttribute('data-target');
+
+        if (target === '4x') {
+          pkgs8x.forEach(function(el) { el.classList.remove('active-pkg'); });
+          pkgs4x.forEach(function(el) { el.classList.add('active-pkg'); });
+        } else {
+          pkgs4x.forEach(function(el) { el.classList.remove('active-pkg'); });
+          pkgs8x.forEach(function(el) { el.classList.add('active-pkg'); });
+        }
+      });
+    });
+
+    // EQUALIZE HEADER HEIGHTS
+    function equalizeHeaders() {
+      const headers = document.querySelectorAll('.pika-card-head');
+      if (!headers.length) return;
+      
+      // Reset height to let them shrink
+      headers.forEach(function(h) { h.style.minHeight = '0px'; });
+      
+      if (window.innerWidth >= 992) {
+        let maxHeight = 0;
+        // Find max height
+        headers.forEach(function(h) {
+          if (h.offsetHeight > maxHeight) {
+            maxHeight = h.offsetHeight;
+          }
+        });
+        // Apply max height
+        headers.forEach(function(h) {
+          h.style.minHeight = maxHeight + 'px';
+        });
+      }
+    }
+
+    // Run on load and window resize
+    equalizeHeaders();
+    window.addEventListener('resize', equalizeHeaders);
+    // Also run slightly delayed to ensure fonts are loaded
+    setTimeout(equalizeHeaders, 100);
+    setTimeout(equalizeHeaders, 500);
+  });
+</script>
+
+<!-- Gunakan is:global agar tidak ada konflik scope CSS Astro dan class pasti ter-apply -->
+<style is:global>
+  .pika-pricing-section {
+    padding: 80px 0;
+    background-color: #f8fafc;
+    font-family: 'Inter', system-ui, sans-serif; /* Fallback safe font */
+  }
+
+  .pika-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* HEADER SECTION */
+  .pika-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .pika-eyebrow {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #40A18B;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .pika-title {
+    font-size: 40px;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .pika-subtitle {
+    font-size: 16px;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+  }
+
+  /* TOGGLE SWITCH */
+  .pika-toggle-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pika-toggle {
+    display: inline-flex;
+    background-color: #e2e8f0;
+    border-radius: 99px;
+    padding: 6px;
+  }
+
+  .pika-btn {
+    background: transparent;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 99px;
+    font-weight: 800;
+    font-size: 15px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .pika-btn:hover {
+    color: #0f172a;
+  }
+
+  .pika-btn.active {
+    background-color: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* GRID */
+  .pika-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  @media (min-width: 992px) {
+    .pika-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  /* CARDS */
+  .pika-card {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    border: 1px solid #f1f5f9;
+  }
+
+  .pika-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .pika-card-head {
+    padding: 35px 25px 25px 25px;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .bg-gradient-yellow { background: linear-gradient(135deg, #facc15 0%, #eab308 100%); }
+  .bg-gradient-purple { background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%); }
+  .bg-gradient-blue { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+
+  .pika-icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+  }
+
+  .pika-card-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+  }
+
+  .pika-card-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.95;
+    color: #ffffff;
+  }
+
+  .pika-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .pika-badges span {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+  }
+
+  .pika-float-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 10;
+  }
+
+  .float-purple { background-color: #d946ef; }
+  .float-blue { background-color: #3b82f6; }
+
+  /* CARD BODY */
+  .pika-card-body {
+    padding: 30px 25px;
+    flex: 1;
+    background-color: #ffffff;
+  }
+
+  .pika-pkg {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  .pika-pkg.active-pkg {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pika-pkg h4 {
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 8px 0;
+  }
+
+  .text-yellow { color: #d97706; }
+  .text-purple { color: #9333ea; }
+  .text-blue { color: #2563eb; }
+
+  .pika-price {
+    font-size: 34px;
+    font-weight: 900;
+    color: #0f172a;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pika-session {
+    font-size: 13px;
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .pika-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pika-features li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.4;
+  }
+
+  .pika-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%2310b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') no-repeat center;
+  }
+
+  /* TRIAL BANNER */
+  .pika-trial-banner {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: #ffffff;
+    box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.4);
+  }
+
+  @media (min-width: 768px) {
+    .pika-trial-banner {
+      flex-direction: row;
+      text-align: left;
+    }
+  }
+
+  .trial-texts h3 {
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+  }
+
+  .trial-badge {
+    display: inline-block;
+    background-color: #fef08a;
+    color: #854d0e;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .trial-texts p {
+    font-size: 15px;
+    margin: 0;
+    opacity: 0.95;
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  .trial-btn {
+    background-color: #ffffff;
+    color: #dc2626;
+    padding: 14px 32px;
+    border-radius: 99px;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  }
+
+  .trial-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0,0,0,0.1);
+  }
+</style>

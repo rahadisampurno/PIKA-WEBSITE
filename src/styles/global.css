@@ -99,7 +99,7 @@ body {
 .pksec {
   padding: 4rem 0 0;
   background-color: white; /* Ubah ke putih agar menyatu dengan section bawah */
-  background-image: url('/assets/BG_Program.png');
+  background-image: url('/assets/BG_Program.webp');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
@@ -307,7 +307,7 @@ body {
   padding: 0;
   margin-top: -70px; /* Menarik banner ke atas sedikit agar rapat dengan Program Kami tanpa memotong */
   background-color: transparent;
-  background-image: url('/assets/BG_TentangKami.png');
+  background-image: url('/assets/BG_TentangKami.webp');
   background-repeat: no-repeat;
   background-position: center top; /* Start from the very top */
   background-size: cover;
@@ -511,7 +511,7 @@ body {
 .pksec {
   padding: 4rem 0 2rem;
   background-color: #f0f6fb;
-  background-image: url('/assets/BG_Program.png');
+  background-image: url('/assets/BG_Program.webp');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;

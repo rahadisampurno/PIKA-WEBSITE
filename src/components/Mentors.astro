@@ -1,12 +1,54 @@
 ---
 const mentors = [
-  { name: 'Kak nisa', role: 'COO/ Operations', color: 'var(--pika-red)', image: '/assets/nisa.png', ig: 'nisaadk' },
-  { name: 'Kak Anisa', role: 'CEO/Lead', color: 'var(--pika-green)', image: '/assets/anisa.jpg', ig: 'dipusparaga' },
-  { name: 'Kak Bintang', role: 'CMO/ Growth', color: 'var(--pika-yellow)', image: '/assets/bintang.png', ig: 'Bintangads' }
+  { 
+    name: 'Kak Nisa', 
+    fullName: 'Nisa Dwi Kumalasari',
+    role: 'COO/ Operations', 
+    color: 'var(--pika-red)', 
+    image: '/assets/nisa.webp', 
+    ig: 'nisaadk',
+    desc: 'Lulusan Pendidikan Matematika, Universitas Pendidikan Indonesia, dengan pengalaman di bidang pendidikan selama 5 tahun. Kak Nisa berperan dalam memastikan kualitas operasional dan pengembangan program berjalan secara efektif untuk menghadirkan pengalaman belajar terbaik bagi setiap anak.'
+  },
+  { 
+    name: 'Kak Anisa', 
+    fullName: 'Anisa Rahma',
+    role: 'CEO/Lead', 
+    color: 'var(--pika-green)', 
+    image: '/assets/anisa.webp', 
+    ig: 'dipusparaga',
+    desc: 'Lulusan Pendidikan Bahasa Daerah, Universitas Pendidikan Indonesia, dengan pengalaman lebih dari 10 tahun di bidang pendidikan. Berkomitmen membangun ruang belajar yang membantu anak mengembangkan rasa percaya diri, keterampilan komunikasi, dan keberanian tampil sejak dini.'
+  },
+  { 
+    name: 'Kak Bintang', 
+    fullName: 'Bintang',
+    role: 'CMO/ Growth', 
+    color: 'var(--pika-yellow)', 
+    image: '/assets/bintang.webp', 
+    ig: 'Bintangads',
+    desc: 'Lulusan Pendidikan Ekonomi, Universitas Pasundan, dengan pengalaman dalam bidang pendidikan selama 5 tahun. Kak Bintang berperan dalam mengembangkan strategi pemasaran dan memperluas dampak program untuk menghadirkan pengalaman belajar yang bermakna bagi setiap anak.'
+  },
+  { 
+    name: 'Kak Aulia', 
+    fullName: 'Aulia',
+    role: 'Mentor', 
+    color: '#f97316', 
+    image: '/assets/aulia.jpg', 
+    ig: 'aauliassy',
+    desc: 'Mentor dengan latar belakang pendidikan Bimbingan dan Konseling dari Ma’soem University. Berpengalaman sebagai private teacher serta aktif sebagai volunteer di Sekolah Anak Nusantara, ia memiliki ketertarikan dalam mendampingi tumbuh kembang anak melalui pendekatan yang suportif, komunikatif, dan menyenangkan.'
+  },
+  { 
+    name: 'Kak Ali', 
+    fullName: 'Ali Ilham',
+    role: 'Mentor', 
+    color: '#3b82f6', 
+    image: '/assets/ali.jpg', 
+    ig: 'alie.ilhamal',
+    desc: 'Lulusan Ilmu Hadits, Universitas Al Azhar, Kairo, Mesir. Aktif sebagai pendongeng di Komunitas Gendong, MC, serta berpengalaman memfasilitasi program edukasi daring. Berfokus mendukung perkembangan kemampuan komunikasi dan kepercayaan diri anak melalui pengalaman belajar yang menyenangkan.'
+  }
 ];
 ---
 
-<section id="mentor" class="mentors-section" style="background-image: url('/assets/BG_MentorKami.png'); background-repeat: no-repeat; background-position: center top; background-size: cover;">
+<section id="mentor" class="mentors-section" style="background-image: url('/assets/BG_MentorKami.webp'); background-repeat: no-repeat; background-position: center top; background-size: cover;">
   <div class="mentors-inner">
     <h2 class="section-title">✦ TIM PIKA ✦</h2>
     <div class="mentor-grid">
@@ -29,6 +71,18 @@ const mentors = [
               </ul>
             </div>
           </div>
+          
+          <!-- Hover Overlay Details -->
+          <div class="card-overlay" style={`border-color: ${m.color}`}>
+             <h3 class="overlay-name" style={`color: ${m.color}`}>{m.fullName}</h3>
+             <h4 class="overlay-role">{m.role}</h4>
+             <p class="overlay-desc">{m.desc}</p>
+             <ul class="sci overlay-sci">
+                <li>
+                  <a href={`https://instagram.com/${m.ig}`} target="_blank" rel="noopener noreferrer" style={`--ac: ${m.color}`}><img src="https://api.iconify.design/lucide:instagram.svg?color=currentColor" width="18" alt="instagram"></a>
+                </li>
+             </ul>
+          </div>
         </div>
       ))}
     </div>
@@ -50,7 +104,7 @@ const mentors = [
 <style>
   .mentors-section {
     padding: 100px 0;
-    background-image: url('/assets/BG_MentorKami.png') !important;
+    background-image: url('/assets/BG_MentorKami.webp') !important;
     background-repeat: no-repeat !important;
     background-position: center top !important;
     background-size: cover !important;
@@ -108,11 +162,12 @@ const mentors = [
     overflow: hidden;
     transform: translateY(22px) scale(0.64);
     transform-origin: top;
-    transition: transform 0.4s ease;
+    transition: all 0.4s ease;
   }
 
   .ref-card:hover .img-bx {
-    transform: translateY(16px) scale(0.67);
+    transform: translateY(10px) scale(0.64);
+    filter: blur(8px) opacity(0.3);
   }
 
   .img-placeholder {
@@ -154,6 +209,12 @@ const mentors = [
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 22px;
+    transition: all 0.4s ease;
+  }
+
+  .ref-card:hover .content {
+    opacity: 0;
+    transform: translateY(10px);
   }
 
   .content .detail {
@@ -215,6 +276,67 @@ const mentors = [
     background: var(--ac, #03a9f4);
     color: #fff;
     transform: scale(1.1);
+  }
+
+  /* Overlay Styles */
+  :global(.card-overlay) {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    border: 4px solid transparent; 
+  }
+
+  :global(.ref-card:hover .card-overlay) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  :global(.overlay-name) {
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  :global(.overlay-role) {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  :global(.overlay-desc) {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #334155;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.overlay-sci) {
+    margin-top: 0;
   }
 
   .mentor-banner {
