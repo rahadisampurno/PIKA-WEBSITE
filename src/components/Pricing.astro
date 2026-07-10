@@ -41,7 +41,7 @@
           <div class="pika-pkg pkg-4x active-pkg">
             <h4 class="text-yellow">PAKET 4X</h4>
             <div class="pika-price">Rp 379.000</div>
-            <div class="pika-session">(Rp 94.750 / sesi)</div>
+            <div class="pika-old-price">Rp 600.000</div>
             <ul class="pika-features">
               <li>4 sesi pembelajaran seru</li>
               <li>Praktik & tampil setiap pertemuan</li>
@@ -53,7 +53,7 @@
           <div class="pika-pkg pkg-8x">
             <h4 class="text-yellow">PAKET 8X</h4>
             <div class="pika-price">Rp 719.000</div>
-            <div class="pika-session">(Rp 89.875 / sesi)</div>
+            <div class="pika-old-price">Rp 1.100.000</div>
             <ul class="pika-features">
               <li>Semua fasilitas Paket 4X</li>
               <li>Sertifikat Level</li>
@@ -65,7 +65,7 @@
           <div class="pika-pkg pkg-12x">
             <h4 class="text-yellow">PAKET 12X</h4>
             <div class="pika-price">Rp 1.049.000</div>
-            <div class="pika-session">(Rp 87.416 / sesi)</div>
+            <div class="pika-old-price">Rp 1.600.000</div>
             <ul class="pika-features">
               <li>Semua fasilitas Paket 8X</li>
               <li>Sertifikat Kelulusan Program Mastery</li>
@@ -91,7 +91,7 @@
           <div class="pika-pkg pkg-4x active-pkg">
             <h4 class="text-purple">PAKET 4X</h4>
             <div class="pika-price">Rp 499.000</div>
-            <div class="pika-session">(Rp 124.750 / sesi)</div>
+            <div class="pika-old-price">Rp 700.000</div>
             <ul class="pika-features">
               <li>Pendampingan personal 1-on-1</li>
               <li>Program belajar sesuai kebutuhan</li>
@@ -103,7 +103,7 @@
           <div class="pika-pkg pkg-8x">
             <h4 class="text-purple">PAKET 8X</h4>
             <div class="pika-price">Rp 999.000</div>
-            <div class="pika-session">(Rp 124.875 / sesi)</div>
+            <div class="pika-old-price">Rp 1.400.000</div>
             <ul class="pika-features">
               <li>Rekaman latihan (jika diperlukan)</li>
               <li>Fleksibel jadwal</li>
@@ -115,7 +115,7 @@
           <div class="pika-pkg pkg-12x">
             <h4 class="text-purple">PAKET 12X</h4>
             <div class="pika-price">Rp 1.499.000</div>
-            <div class="pika-session">(Rp 124.916 / sesi)</div>
+            <div class="pika-old-price">Rp 2.100.000</div>
             <ul class="pika-features">
               <li>Semua fasilitas Paket 8X</li>
               <li>Kurikulum Kustom (Mastery Program)</li>
@@ -140,8 +140,8 @@
           <!-- 4X -->
           <div class="pika-pkg pkg-4x active-pkg">
             <h4 class="text-blue">PAKET 4X</h4>
-            <div class="pika-price">Rp 199.000</div>
-            <div class="pika-session">(Rp 49.750 / sesi)</div>
+            <div class="pika-price">Rp 299.000</div>
+            <div class="pika-old-price">Rp 350.000</div>
             <ul class="pika-features">
               <li>Live via Zoom / Google Meet</li>
               <li>Materi interaktif & menarik</li>
@@ -152,8 +152,8 @@
           <!-- 8X -->
           <div class="pika-pkg pkg-8x">
             <h4 class="text-blue">PAKET 8X</h4>
-            <div class="pika-price">Rp 399.000</div>
-            <div class="pika-session">(Rp 49.875 / sesi)</div>
+            <div class="pika-price">Rp 589.000</div>
+            <div class="pika-old-price">Rp 680.000</div>
             <ul class="pika-features">
               <li>Rekaman pembelajaran</li>
               <li>Tugas kreatif & fun challenge</li>
@@ -164,8 +164,8 @@
           <!-- 12X -->
           <div class="pika-pkg pkg-12x">
             <h4 class="text-blue">PAKET 12X</h4>
-            <div class="pika-price">Rp 599.000</div>
-            <div class="pika-session">(Rp 49.916 / sesi)</div>
+            <div class="pika-price">Rp 869.000</div>
+            <div class="pika-old-price">Rp 1.020.000</div>
             <ul class="pika-features">
               <li>Semua fasilitas Paket 8X</li>
               <li>Sertifikat Kelulusan Program Mastery</li>
@@ -478,11 +478,15 @@
     margin-bottom: 4px;
   }
 
-  .pika-session {
-    font-size: 13px;
+  .pika-old-price {
+    font-size: 14px;
     color: #64748b;
     text-align: center;
+    text-decoration: line-through;
+    text-decoration-color: #ef4444;
+    text-decoration-thickness: 2px;
     margin-bottom: 24px;
+    font-weight: 600;
   }
 
   .pika-features {
